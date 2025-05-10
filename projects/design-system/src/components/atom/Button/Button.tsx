@@ -1,6 +1,7 @@
 import React, { ComponentProps, ReactNode } from "react";
 import { ColorType, Size, State, Variant } from "@/types/type";
 import { cva, VariantProps } from "class-variance-authority";
+import Icon, { IconName } from "../Icon";
 
 export type ButtonVariantProps = VariantProps<typeof buttonVariants>;
 
@@ -11,6 +12,7 @@ export type ButtonProps = ComponentProps<"button"> &
     state?: State;
     size?: Size;
     fullWidth?: boolean;
+    iconName?: IconName;
     children: ReactNode;
   };
 
@@ -110,8 +112,17 @@ export const Button = ({
   fullWidth = false,
   children,
   state = "enable",
+  iconName,
   ...props
 }: ButtonProps) => {
+  const iconSize = {
+    XS: 14,
+    S: 16,
+    M: 20,
+    L: 20,
+    XL: 24,
+  };
+
   return (
     <button
       className={buttonVariants({ color, variant, size, state, fullWidth })}
@@ -119,6 +130,9 @@ export const Button = ({
       {...props}
     >
       {children}
+      {iconName && (
+        <Icon name={iconName} width={iconSize[size]} height={iconSize[size]} />
+      )}
     </button>
   );
 };
