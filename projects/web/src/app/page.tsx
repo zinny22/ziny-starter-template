@@ -20,7 +20,7 @@ const ThemeImage = (props: Props) => {
 export default function Home() {
   return (
     <div>
-      <h1 className="text-3xl text-red-300">메인화면?</h1>
+      <h1 className="text-3xl text-red-300 text-title32Bd">메인화면?</h1>
       <Button label="가나다라" />
     </div>
   );
