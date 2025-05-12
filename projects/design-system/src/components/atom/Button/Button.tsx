@@ -25,7 +25,7 @@ export const buttonVariants = cva(
         false: "",
       },
       color: {
-        primary: "bg-orange-900 text-white",
+        primary: "bg-main-900 text-white",
         secondary: "bg-white text-gray-700 border border-gray-300",
         tertiary: "bg-gray-900 text-white",
         cta: "bg-cta text-white",
@@ -60,12 +60,12 @@ export const buttonVariants = cva(
         color: "primary",
         variant: "outline",
         state: "enable",
-        class: "bg-white !text-orange-900 border border-orange-900",
+        class: "bg-white !text-main-900 border border-main-900",
       },
       {
         color: "primary",
         variant: "ghost",
-        class: "bg-white text-orange-900 ",
+        class: "bg-white text-main-900 ",
       },
       {
         color: "secondary",

@@ -7,9 +7,9 @@ export type TagColor =
   | "gray"
   | "blueSolid"
   | "blueLight"
-  | "orangeLight"
-  | "orange700"
-  | "orange900";
+  | "mainLight"
+  | "main700"
+  | "main900";
 
 type TagProps = VariantProps<typeof tagVariants> & {
   children: React.ReactNode;
@@ -30,9 +30,9 @@ export const tagVariants = cva(
         gray: "bg-gray-100 text-gray-700",
         blueSolid: "bg-blue-500 text-white",
         blueLight: "bg-blue-bg text-blue-500",
-        orangeLight: "bg-orange-bg text-orange-900",
-        orange700: "bg-orange-700 text-white",
-        orange900: "bg-orange-900 text-white",
+        mainLight: "bg-main-bg text-main-900",
+        main700: "bg-main-700 text-white",
+        main900: "bg-main-900 text-white",
       },
       size: {
         S: "text-caption10Sm h-4 pr-1 pl-[2px] gap-x-1",

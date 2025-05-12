@@ -60,30 +60,30 @@ export const BlueLight: Story = {
   },
 };
 
-export const OrangeLight: Story = {
+export const MainLight: Story = {
   args: {
     children: "태그입니다.",
-    color: "orangeLight",
+    color: "mainLight",
     size: "M",
     radius: "none",
     iconName: "Add",
   },
 };
 
-export const Orange700: Story = {
+export const Main700: Story = {
   args: {
     children: "태그입니다.",
-    color: "orange700",
+    color: "main700",
     size: "M",
     radius: "none",
     iconName: "Add",
   },
 };
 
-export const Orange900: Story = {
+export const Main900: Story = {
   args: {
     children: "태그입니다.",
-    color: "orange900",
+    color: "main900",
     size: "M",
     radius: "none",
     iconName: "Add",
@@ -93,7 +93,7 @@ export const Orange900: Story = {
 export const NoIcon: Story = {
   args: {
     children: "태그입니다.",
-    color: "orange900",
+    color: "main900",
     size: "M",
     radius: "none",
     iconName: undefined,
@@ -103,7 +103,7 @@ export const NoIcon: Story = {
 export const RadiusFull: Story = {
   args: {
     children: "태그입니다.",
-    color: "orange900",
+    color: "main900",
     size: "M",
     radius: "full",
     iconName: "Add",
