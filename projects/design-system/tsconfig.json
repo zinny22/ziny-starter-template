@@ -21,7 +21,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "../web/src/theme/font.ts"
+    "../web/src/theme/font.ts",
+    "tailwind.config.js"
   ],
   "exclude": ["node_modules"]
 }

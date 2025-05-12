@@ -5,3 +5,5 @@ export type Variant = "container" | "outline" | "ghost";
 export type State = "enable" | "disable" | "skeleton";
 
 export type Size = "XS" | "S" | "M" | "L" | "XL";
+
+export type Radius = "none" | "full";
