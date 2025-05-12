@@ -1,16 +1,16 @@
 import { Meta, StoryObj } from "@storybook/react";
-import TextInput from "./TextInput";
+import TextArea from "./TextArea";
 
 const meta = {
-  title: "atom/TextInput",
-  component: TextInput,
+  title: "atom/TextArea",
+  component: TextArea,
   parameters: {
     layout: "centered",
   },
 
   tags: ["autodocs"],
   argTypes: {},
-} satisfies Meta<typeof TextInput>;
+} satisfies Meta<typeof TextArea>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -23,7 +23,7 @@ export const Default: Story = {
     buttonLabel: "버튼",
     onClick: () => console.log("click"),
     description: "가이드를 입력해주세요",
-    maxLength: 10,
+    maxLength: 300,
   },
 };
 
@@ -35,7 +35,7 @@ export const Error: Story = {
     buttonLabel: "버튼",
     onClick: () => console.log("click"),
     description: "가이드를 입력해주세요",
-    maxLength: 10,
+    maxLength: 300,
     isError: true,
   },
 };
@@ -47,7 +47,7 @@ export const Disabled: Story = {
     buttonLabel: "버튼",
     onClick: () => console.log("click"),
     description: "가이드를 입력해주세요",
-    maxLength: 10,
+    maxLength: 300,
     isDisabled: true,
   },
 };
@@ -58,7 +58,7 @@ export const NotLabel: Story = {
     buttonLabel: "버튼",
     onClick: () => console.log("click"),
     description: "가이드를 입력해주세요",
-    maxLength: 10,
+    maxLength: 300,
   },
 };
 
@@ -68,7 +68,7 @@ export const NotDescription: Story = {
     placeholder: "텍스트를 입력해주세요",
     buttonLabel: "버튼",
     onClick: () => console.log("click"),
-    maxLength: 10,
+    maxLength: 300,
   },
 };
 

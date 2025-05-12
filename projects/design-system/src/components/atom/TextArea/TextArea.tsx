@@ -12,7 +12,7 @@ import Icon, { IconName } from "../Icon";
 import { colors } from "@/theme/colors";
 import clsx from "clsx";
 
-interface TextInputProps extends ComponentProps<"input"> {
+interface TextInputProps extends ComponentProps<"textarea"> {
   label?: string;
   isRequired?: boolean;
   placeholder?: string;
@@ -27,7 +27,7 @@ interface TextInputProps extends ComponentProps<"input"> {
   setValue?: Dispatch<SetStateAction<string>>;
 }
 
-function TextInput({
+function TextArea({
   label,
   isRequired,
   placeholder,
@@ -44,9 +44,9 @@ function TextInput({
 }: TextInputProps) {
   const [isFocus, setIsFocus] = useState(false);
   const [_isError, setIsError] = useState(false);
-  const [innerValue, setInnerValue] = useState("");
+  const [innerValue, setInnerValue] = useState(value || "");
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (maxLength) {
       if (e.target.value.length > maxLength) {
         setIsError(true);
@@ -75,7 +75,7 @@ function TextInput({
   }, [value]);
 
   return (
-    <div className="grid gap-y-2 px-4 py-3">
+    <div className="grid gap-y-2 px-4 py-2">
       {label && (
         <div className="flex items-center gap-x-[2px]">
           <label
@@ -92,56 +92,24 @@ function TextInput({
         </div>
       )}
 
-      <div className="flex items-center justify-center gap-x-2">
-        <div
-          className={clsx(
-            "p-3 flex items-center justify-center gap-x-2 border border-gray-300 rounded-[5px]",
-            isDisabled && "bg-gray-100 border border-gray-200",
-            isFocus && "border-main-900",
-            _isError && "border-red-500"
-          )}
-        >
-          <Icon
-            name={iconName || "InfoCircle"}
-            width={20}
-            height={20}
-            color={isDisabled ? colors.gray[400] : ""}
-          />
-          <input
-            type="text"
-            placeholder={placeholder}
-            className="placeholder:text-gray-500 text-body16Reg outline-none text-gray-900"
-            value={innerValue}
-            onChange={onChange}
-            disabled={isDisabled}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
-            {...props}
-          />
-
-          {innerValue && !isDisabled ? (
-            <button onClick={() => setInnerValue("")}>
-              <Icon
-                name="Cancel"
-                width={20}
-                height={20}
-                color={colors.gray[400]}
-              />
-            </button>
-          ) : (
-            <div className="w-5" />
-          )}
-        </div>
-
-        <Button
-          variant="container"
-          color="secondary"
-          size="M"
-          onClick={onClick}
-          state={isDisabled ? "disable" : "enable"}
-        >
-          {buttonLabel}
-        </Button>
+      <div
+        className={clsx(
+          "p-3 border border-gray-300 rounded-[5px] h-[158px] overflow-y-auto",
+          isDisabled && "bg-gray-100 border border-gray-200",
+          isFocus && "border-main-900",
+          _isError && "border-red-500"
+        )}
+      >
+        <textarea
+          placeholder={placeholder}
+          className="placeholder:text-gray-400 text-body16Reg outline-none text-gray-900 resize-none h-[132px]"
+          value={innerValue}
+          onChange={onChange}
+          disabled={isDisabled}
+          onFocus={() => setIsFocus(true)}
+          onBlur={() => setIsFocus(false)}
+          {...props}
+        />
       </div>
 
       {(description || maxLength) && (
@@ -164,4 +132,4 @@ function TextInput({
   );
 }
 
-export default TextInput;
+export default TextArea;
