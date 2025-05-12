@@ -104,8 +104,7 @@ export const buttonVariants = cva(
     ],
   }
 );
-
-export const Button = ({
+function Button({
   color = "primary",
   variant = "container",
   size = "M",
@@ -114,7 +113,7 @@ export const Button = ({
   state = "enable",
   iconName,
   ...props
-}: ButtonProps) => {
+}: ButtonProps) {
   const iconSize = {
     XS: 14,
     S: 16,
@@ -135,4 +134,6 @@ export const Button = ({
       )}
     </button>
   );
-};
+}
+
+export default Button;

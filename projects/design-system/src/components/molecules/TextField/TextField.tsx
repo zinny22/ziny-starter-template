@@ -7,12 +7,12 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Button } from "../Button/Button";
-import Icon, { IconName } from "../Icon";
-import { colors } from "@/theme/colors";
-import clsx from "clsx";
 
-interface TextInputProps extends ComponentProps<"textarea"> {
+import clsx from "clsx";
+import { IconName } from "@/components/atom/Icon";
+import { Button, TextInput } from "@/components/atom";
+
+interface TextFieldProps extends ComponentProps<"input"> {
   label?: string;
   isRequired?: boolean;
   placeholder?: string;
@@ -27,7 +27,7 @@ interface TextInputProps extends ComponentProps<"textarea"> {
   setValue?: Dispatch<SetStateAction<string>>;
 }
 
-function TextArea({
+function TextField({
   label,
   isRequired,
   placeholder,
@@ -41,26 +41,9 @@ function TextArea({
   value,
   setValue,
   ...props
-}: TextInputProps) {
-  const [isFocus, setIsFocus] = useState(false);
-  const [_isError, setIsError] = useState(false);
+}: TextFieldProps) {
   const [innerValue, setInnerValue] = useState(value || "");
-
-  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (maxLength) {
-      if (e.target.value.length > maxLength) {
-        setIsError(true);
-        return;
-      } else {
-        setIsError(false);
-        setInnerValue(e.target.value);
-        setValue?.(e.target.value);
-      }
-    } else {
-      setInnerValue(e.target.value);
-      setValue?.(e.target.value);
-    }
-  };
+  const [_isError, setIsError] = useState(false);
 
   useEffect(() => {
     if (isError) {
@@ -71,14 +54,28 @@ function TextArea({
   }, [isError]);
 
   useEffect(() => {
-    setInnerValue(value || "");
+    if (!value) return;
+    setInnerValue(value);
   }, [value]);
 
+  useEffect(() => {
+    if (maxLength && innerValue.length === maxLength) {
+      setIsError(true);
+    } else {
+      setIsError(false);
+    }
+
+    if (innerValue.length === 0) {
+      setIsError(false);
+    }
+  }, [innerValue, maxLength]);
+
   return (
-    <div className="grid gap-y-2 px-4 py-2">
+    <div className="grid gap-y-2 px-4 py-3">
       {label && (
         <div className="flex items-center gap-x-[2px]">
           <label
+            htmlFor="input-id"
             className={clsx(
               "text-caption16Bd text-gray-900",
               _isError && "text-red-500"
@@ -92,24 +89,28 @@ function TextArea({
         </div>
       )}
 
-      <div
-        className={clsx(
-          "p-3 border border-gray-300 rounded-[5px] h-[158px] overflow-y-auto",
-          isDisabled && "bg-gray-100 border border-gray-200",
-          isFocus && "border-main-900",
-          _isError && "border-red-500"
-        )}
-      >
-        <textarea
+      <div className="flex items-center justify-center gap-x-2">
+        <TextInput
+          id="input-id"
           placeholder={placeholder}
-          className="placeholder:text-gray-400 text-body16Reg outline-none text-gray-900 resize-none h-[132px]"
+          iconName="InfoCircle"
+          isDisabled={isDisabled}
+          isError={isError}
           value={innerValue}
-          onChange={onChange}
-          disabled={isDisabled}
-          onFocus={() => setIsFocus(true)}
-          onBlur={() => setIsFocus(false)}
-          {...props}
+          setValue={setInnerValue}
+          color="main"
+          maxLength={maxLength}
         />
+
+        <Button
+          variant="container"
+          color="secondary"
+          size="M"
+          onClick={onClick}
+          state={isDisabled ? "disable" : "enable"}
+        >
+          {buttonLabel}
+        </Button>
       </div>
 
       {(description || maxLength) && (
@@ -132,4 +133,4 @@ function TextArea({
   );
 }
 
-export default TextArea;
+export default TextField;

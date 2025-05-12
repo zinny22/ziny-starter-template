@@ -7,59 +7,57 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Button } from "../Button/Button";
 import Icon, { IconName } from "../Icon";
 import { colors } from "@/theme/colors";
 import clsx from "clsx";
 
-interface TextAreaProps extends ComponentProps<"input"> {
-  label?: string;
-  isRequired?: boolean;
+interface TextInputProps extends ComponentProps<"input"> {
   placeholder?: string;
   iconName?: IconName;
-  maxLength?: number;
-  description?: string;
-  buttonLabel?: string;
-  onClick?: () => void;
   isDisabled?: boolean;
   isError?: boolean;
   value?: string;
   setValue?: Dispatch<SetStateAction<string>>;
+  color?: "main" | "default";
+  maxLength?: number;
 }
 
 function TextInput({
-  label,
-  isRequired,
   placeholder,
   iconName,
-  maxLength,
-  description,
-  buttonLabel,
-  onClick,
   isDisabled,
   isError,
   value,
   setValue,
+  color = "default",
+  maxLength,
   ...props
-}: TextAreaProps) {
+}: TextInputProps) {
   const [isFocus, setIsFocus] = useState(false);
   const [_isError, setIsError] = useState(false);
   const [innerValue, setInnerValue] = useState("");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (maxLength) {
-      if (e.target.value.length > maxLength) {
-        setIsError(true);
-        return;
-      } else {
-        setIsError(false);
-        setInnerValue(e.target.value);
-        setValue?.(e.target.value);
-      }
+    const nextValue = e.target.value;
+
+    if (maxLength && nextValue.length > maxLength) return;
+
+    setInnerValue(nextValue);
+    setValue?.(nextValue);
+
+    if (maxLength && nextValue.length === maxLength) {
+      setIsError(true);
     } else {
-      setInnerValue(e.target.value);
-      setValue?.(e.target.value);
+      setIsError(false);
     }
+
+    props.onChange?.(e);
+  };
+
+  const onClickReset = () => {
+    setInnerValue("");
+    setValue?.("");
+    setIsError(false);
   };
 
   useEffect(() => {
@@ -75,90 +73,40 @@ function TextInput({
   }, [value]);
 
   return (
-    <div className="grid gap-y-2 px-4 py-3">
-      {label && (
-        <div className="flex items-center gap-x-[2px]">
-          <label
-            className={clsx(
-              "text-caption16Bd text-gray-900",
-              _isError && "text-red-500"
-            )}
-          >
-            {label}
-          </label>
-          {isRequired && (
-            <span className="text-caption16Bd text-main-900">*</span>
-          )}
-        </div>
+    <div
+      className={clsx(
+        "p-3 flex items-center justify-center gap-x-2 border border-gray-300 rounded-[5px]",
+        isDisabled && "bg-gray-100 border border-gray-200",
+        isFocus && color === "main" && "border-main-900",
+        isFocus && color === "default" && "border-gray-900",
+        _isError && "border-red-500"
       )}
+    >
+      <Icon
+        name={iconName || "InfoCircle"}
+        width={20}
+        height={20}
+        color={isDisabled ? colors.gray[400] : ""}
+      />
+      <input
+        type="text"
+        placeholder={placeholder}
+        className={clsx(
+          "placeholder:text-gray-500 text-body16Reg outline-none text-gray-900",
+          (!innerValue || isDisabled) && "pr-[28px]"
+        )}
+        value={innerValue}
+        onChange={onChange}
+        disabled={isDisabled}
+        onFocus={() => setIsFocus(true)}
+        onBlur={() => setIsFocus(false)}
+        {...props}
+      />
 
-      <div className="flex items-center justify-center gap-x-2">
-        <div
-          className={clsx(
-            "p-3 flex items-center justify-center gap-x-2 border border-gray-300 rounded-[5px]",
-            isDisabled && "bg-gray-100 border border-gray-200",
-            isFocus && "border-main-900",
-            _isError && "border-red-500"
-          )}
-        >
-          <Icon
-            name={iconName || "InfoCircle"}
-            width={20}
-            height={20}
-            color={isDisabled ? colors.gray[400] : ""}
-          />
-          <input
-            type="text"
-            placeholder={placeholder}
-            className="placeholder:text-gray-500 text-body16Reg outline-none text-gray-900"
-            value={innerValue}
-            onChange={onChange}
-            disabled={isDisabled}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
-            {...props}
-          />
-
-          {innerValue && !isDisabled ? (
-            <button onClick={() => setInnerValue("")}>
-              <Icon
-                name="Cancel"
-                width={20}
-                height={20}
-                color={colors.gray[400]}
-              />
-            </button>
-          ) : (
-            <div className="w-5" />
-          )}
-        </div>
-
-        <Button
-          variant="container"
-          color="secondary"
-          size="M"
-          onClick={onClick}
-          state={isDisabled ? "disable" : "enable"}
-        >
-          {buttonLabel}
-        </Button>
-      </div>
-
-      {(description || maxLength) && (
-        <div
-          className={clsx(
-            "flex items-center justify-between gap-x-2 text-body14Reg text-gray-500",
-            _isError && "!text-red-500"
-          )}
-        >
-          {description ? <p>{description}</p> : <div />}
-
-          {maxLength && (
-            <p>
-              {innerValue.length}/{maxLength}
-            </p>
-          )}
-        </div>
+      {innerValue && !isDisabled && (
+        <button onClick={onClickReset}>
+          <Icon name="Cancel" width={20} height={20} color={colors.gray[400]} />
+        </button>
       )}
     </div>
   );
