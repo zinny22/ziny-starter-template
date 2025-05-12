@@ -12,7 +12,7 @@ import Icon, { IconName } from "../Icon";
 import { colors } from "@/theme/colors";
 import clsx from "clsx";
 
-interface TextInputProps extends ComponentProps<"input"> {
+interface TextAreaProps extends ComponentProps<"input"> {
   label?: string;
   isRequired?: boolean;
   placeholder?: string;
@@ -41,7 +41,7 @@ function TextInput({
   value,
   setValue,
   ...props
-}: TextInputProps) {
+}: TextAreaProps) {
   const [isFocus, setIsFocus] = useState(false);
   const [_isError, setIsError] = useState(false);
   const [innerValue, setInnerValue] = useState("");
