@@ -1,6 +1,6 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
-import { pretendard } from "../src/theme/font";
+import { pretendard } from "../src/themeConfig/font";
 import "../src/styles/globals.css";
 
 const preview: Preview = {

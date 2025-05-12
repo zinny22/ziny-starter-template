@@ -266,4 +266,4 @@ const fontSize = {
   ],
 };
 
-export default fontSize;
+module.exports = fontSize;

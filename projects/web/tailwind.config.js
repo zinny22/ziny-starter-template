@@ -1,5 +1,5 @@
-const colors = require("../design-system/src/theme/colors");
-const fontSize = require("../design-system/src/theme/fontSize");
+const colors = require("../design-system/src/themeConfig/colors");
+const fontSize = require("../design-system/src/themeConfig/fontSize");
 
 /** @type {import('tailwindcss').Config} */
 export default {

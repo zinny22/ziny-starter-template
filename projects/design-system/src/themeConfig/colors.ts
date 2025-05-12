@@ -116,7 +116,7 @@ const delay = purple;
 const transparent = "transparent";
 const currentColor = "currentColor";
 
-export const colors = {
+const colors = {
   orange,
   blue,
   red,
@@ -137,4 +137,4 @@ export const colors = {
   currentColor,
 };
 
-export default colors;
+module.exports = colors;
