@@ -4,3 +4,5 @@ export { default as Tag } from "./Tag/Tag";
 export { default as Stepper } from "./Stepper/Stepper";
 export { default as TextInput } from "./TextInput/TextInput";
 export { default as Radio } from "./Radio/Radio";
+export { default as DotIndicator } from "./DotIndicator/DotIndicator";
+export { default as PaginationIndicator } from "./PaginationIndicator/PaginationIndicator";
