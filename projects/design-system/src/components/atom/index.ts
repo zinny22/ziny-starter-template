@@ -6,3 +6,4 @@ export { default as TextInput } from "./TextInput/TextInput";
 export { default as Radio } from "./Radio/Radio";
 export { default as DotIndicator } from "./DotIndicator/DotIndicator";
 export { default as PaginationIndicator } from "./PaginationIndicator/PaginationIndicator";
+export { default as Badge } from "./Badge/Badge";
