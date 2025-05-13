@@ -1,6 +1,6 @@
 export type ColorType = "primary" | "secondary" | "tertiary" | "cta";
 
-export type Variant = "container" | "outline" | "ghost";
+export type Variant = "contained" | "outline" | "ghost";
 
 export type State = "enable" | "disable" | "skeleton";
 

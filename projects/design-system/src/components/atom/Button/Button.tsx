@@ -31,7 +31,7 @@ export const buttonVariants = cva(
         cta: "bg-cta text-white",
       },
       variant: {
-        container: "",
+        contained: "",
         outline: "",
         ghost: "",
         text: "",
@@ -51,7 +51,7 @@ export const buttonVariants = cva(
     },
     defaultVariants: {
       color: "primary",
-      variant: "container",
+      variant: "contained",
       size: "S",
     },
 
@@ -106,7 +106,7 @@ export const buttonVariants = cva(
 );
 function Button({
   color = "primary",
-  variant = "container",
+  variant = "contained",
   size = "M",
   fullWidth = false,
   children,

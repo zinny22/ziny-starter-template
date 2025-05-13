@@ -20,7 +20,7 @@ export const Primary: Story = {
   args: {
     children: "버튼입니다",
     color: "primary",
-    variant: "container",
+    variant: "contained",
     size: "M",
     fullWidth: false,
     state: "enable",
@@ -31,7 +31,7 @@ export const Secondary: Story = {
   args: {
     children: "버튼입니다",
     color: "secondary",
-    variant: "container",
+    variant: "contained",
     size: "M",
     fullWidth: false,
     state: "enable",
@@ -42,7 +42,7 @@ export const Tertiary: Story = {
   args: {
     children: "버튼입니다",
     color: "tertiary",
-    variant: "container",
+    variant: "contained",
     size: "M",
     fullWidth: false,
     state: "enable",
@@ -53,7 +53,7 @@ export const Cta: Story = {
   args: {
     children: "버튼입니다",
     color: "cta",
-    variant: "container",
+    variant: "contained",
     size: "M",
     fullWidth: false,
     state: "enable",
