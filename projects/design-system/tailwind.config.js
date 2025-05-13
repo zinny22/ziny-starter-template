@@ -1,5 +1,6 @@
 const colors = require("./src/themeConfig/colors");
 const fontSize = require("./src/themeConfig/fontSize");
+const boxShadow = require("./src/themeConfig/boxShadow");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -7,6 +8,7 @@ module.exports = {
   theme: {
     colors,
     fontSize,
+    boxShadow,
     extend: {},
   },
   plugins: [],
