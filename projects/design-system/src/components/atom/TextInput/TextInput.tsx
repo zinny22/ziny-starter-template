@@ -75,33 +75,35 @@ function TextInput({
   return (
     <div
       className={clsx(
-        "p-3 flex items-center justify-center gap-x-2 border border-gray-300 rounded-[5px]",
+        "p-3 flex items-center justify-between gap-x-2 border border-gray-300 rounded-[5px] w-full ",
         isDisabled && "bg-gray-100 border border-gray-200",
         isFocus && color === "main" && "border-main-900",
         isFocus && color === "default" && "border-gray-900",
         _isError && "border-red-500"
       )}
     >
-      <Icon
-        name={iconName || "InfoCircle"}
-        width={20}
-        height={20}
-        color={isDisabled ? colors.gray[400] : ""}
-      />
-      <input
-        type="text"
-        placeholder={placeholder}
-        className={clsx(
-          "placeholder:text-gray-500 text-body16Reg outline-none text-gray-900",
-          (!innerValue || isDisabled) && "pr-[28px]"
-        )}
-        value={innerValue}
-        onChange={onChange}
-        disabled={isDisabled}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
-        {...props}
-      />
+      <div className="flex items-center gap-x-2 w-full">
+        <Icon
+          name={iconName || "InfoCircle"}
+          width={20}
+          height={20}
+          color={isDisabled ? colors.gray[400] : ""}
+        />
+        <input
+          type="text"
+          placeholder={placeholder}
+          className={clsx(
+            "placeholder:text-gray-500 text-body16Reg outline-none text-gray-900",
+            (!innerValue || isDisabled) && "pr-[28px]"
+          )}
+          value={innerValue}
+          onChange={onChange}
+          disabled={isDisabled}
+          onFocus={() => setIsFocus(true)}
+          onBlur={() => setIsFocus(false)}
+          {...props}
+        />
+      </div>
 
       {innerValue && !isDisabled && (
         <button onClick={onClickReset}>

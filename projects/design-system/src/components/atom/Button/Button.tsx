@@ -17,7 +17,7 @@ export type ButtonProps = ComponentProps<"button"> &
   };
 
 export const buttonVariants = cva(
-  "flex items-center justify-center gap-x-1 rounded-[5px]",
+  "flex items-center justify-center gap-x-1 rounded-[5px] whitespace-nowrap",
   {
     variants: {
       fullWidth: {

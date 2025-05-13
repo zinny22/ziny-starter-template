@@ -5,7 +5,7 @@ const meta = {
   title: "molecules/TextField",
   component: TextField,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
 
   tags: ["autodocs"],
