@@ -14,8 +14,6 @@ import { usePathname } from "next/navigation";
 
 function Header() {
   const pathname = usePathname();
-
-  console.log(getBreadcrumbTitles(pathname));
   return (
     <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
       <SidebarTrigger className="-ml-1" />

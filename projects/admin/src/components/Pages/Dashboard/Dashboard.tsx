@@ -1,10 +1,12 @@
 "use client";
+
 import { useState } from "react";
 import { ChartAreaInteractive } from "./Chart";
-import StateCard from "./StateCard";
+import { StateCard, TrendList } from "./sub";
 
 function Dashboard() {
   const [title, setTitle] = useState("매출");
+
   return (
     <div className="flex flex-1 flex-col gap-4 p-4">
       <div className="grid auto-rows-min gap-4 md:grid-cols-3">
@@ -30,7 +32,10 @@ function Dashboard() {
           onClick={() => setTitle("방문객수")}
         />
       </div>
+
       <ChartAreaInteractive title={title} />
+
+      <TrendList />
     </div>
   );
 }

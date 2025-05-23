@@ -25,7 +25,7 @@ function StateCard({
   onClick,
 }: StateCardProps) {
   return (
-    <Card className="@container/card cursor-pointer" onClick={onClick}>
+    <Card className="@container/card cursor-pointer w-full" onClick={onClick}>
       <CardHeader className="relative">
         <CardDescription>{title}</CardDescription>
         <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
