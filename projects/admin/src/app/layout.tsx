@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="">
         <main>
-          <SidebarProvider>
+          <SidebarProvider defaultOpen={false}>
             <Sidebar />
             <SidebarInset>
               <Header />
