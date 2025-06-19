@@ -4,3 +4,4 @@ export { default as RadioGroup } from "./RadioGroup/RadioGroup";
 export { default as Snackbar } from "./Snackbar/Snackbar";
 export { default as Toast } from "./Toast/Toast";
 export { default as Modal } from "./Modal/Modal";
+export { default as BottomSheet } from "./BottomSheet/BottomSheet";

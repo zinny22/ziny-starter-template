@@ -15,7 +15,7 @@ const preview: Preview = {
   decorators: [
     (Story: any) => (
       <div className={pretendard.className}>
-        <div className="h-[100vh] w-[50vw]">
+        <div>
           <Story />
         </div>
       </div>
